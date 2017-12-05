@@ -33,7 +33,7 @@ def get_content(html):
         '<dd>.*?href="(.*?)".*?blank">(.*?)</a>.*?"desc">(.*?)</div>.*?rating_nums">(.*?)</span>.*?</dd>', re.S)
     content = re.findall(pattern, html)
     # print(content)
-    for item in content:
+    for item in conthoent:
         yield {
             'name' : item[1],
             'category' : item[2].strip(),
