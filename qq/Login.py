@@ -9,7 +9,7 @@ import time
 import re
 
 
-#这个函数是用来获取cookie,g_tk,g_qzontoken这三个数据
+#获取cookie,g_tk,g_qzontoken这三个数据
 def Login_QQ():
     '''gtk解密'''
     def getGTK(cookie):
@@ -28,9 +28,9 @@ def Login_QQ():
     browser.find_element_by_id('switcher_plogin').click()
 
     browser.find_element_by_id('u').clear()
-    browser.find_element_by_id('u').send_keys('836242657')  # 这里填写你的QQ号
+    browser.find_element_by_id('u').send_keys('')  # 这里填写你的QQ号
     browser.find_element_by_id('p').clear()
-    browser.find_element_by_id('p').send_keys('kWK15528092202')  # 这里填写你的QQ密码
+    browser.find_element_by_id('p').send_keys('')  # 这里填写你的QQ密码
 
     browser.find_element_by_id('login_button').click()
     time.sleep(1)

@@ -13,9 +13,9 @@ from qq.getFriends import getFriends
 from qq.mood import parse_mood
 
 host='localhost'
-user='root'
-pwd='Hanhuan.0214'
-db='qq'
+user=''
+pwd=''
+db=''
 
 con=pymysql.connect(host,user,pwd,db,use_unicode=True, charset="utf8")#可中文入库
 cursor=con.cursor()
