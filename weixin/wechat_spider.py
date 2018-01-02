@@ -10,19 +10,21 @@ import itchat
 from echarts import Echart, Legend, Pie
 
 
-itchat.login()
+itchat.auto_login()
 
 
 # itchat.send(u'你好','filehelper') #以文件传输的方式发送文件
 #获取好友列表
 friends = itchat.get_friends(update=True)[0:]
 for i in friends:
-# 获取个性签名
-    signature = i["Signature"].strip().replace("span", "").replace("class", "").replace("emoji", "")
-# 正则匹配过滤掉emoji表情，例如emoji1f3c3等
-    rep = re.compile("1f\d.+")
-    signature = rep.sub("", signature)
-    print(signature)
+    print(i)
+# for i in friends:
+# # 获取个性签名
+#     signature = i["Signature"].strip().replace("span", "").replace("class", "").replace("emoji", "")
+# # 正则匹配过滤掉emoji表情，例如emoji1f3c3等
+#     rep = re.compile("1f\d.+")
+#     signature = rep.sub("", signature)
+#     print(signature)
 # male = female = other = 0
 #
 # # 遍历这个列表，列表里第一位是自己，所以从"自己"之后开始计算
