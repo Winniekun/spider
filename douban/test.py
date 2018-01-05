@@ -5,7 +5,7 @@
 @contact: 836242657@qq.com
 '''
 import re
-file='/home/kongweikun/PycharmProjects/spider/douban/result.txt'
+file='/home/kongweikun/PycharmProjects/spider/douban/starbucks_result.txt'
 content=open(file)
     # url='https://movie.douban.com/subject/26759539/?from=tag_all'
     # html=get_page(url)

@@ -37,7 +37,7 @@ def write_file(content):
         f.close()
 
 def main():
-    file='/home/kongweikun/PycharmProjects/spider/douban/result.txt'
+    file='/home/kongweikun/PycharmProjects/spider/douban/starbucks_result.txt'
     content=open(file)
     for row in content:
         pattern = re.compile('[a-zA-z]+://[^\s,"]*')

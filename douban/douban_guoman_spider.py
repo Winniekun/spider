@@ -24,7 +24,7 @@ def get_page(url):
         return None
 
 def write_file(content):
-    with open('result.txt','a',encoding='utf-8') as f:
+    with open('starbucks_result.txt','a',encoding='utf-8') as f:
         f.write(json.dumps(content,ensure_ascii=False)  + '\n')#写入文件,并且确定为汉字
         f.close()
 
