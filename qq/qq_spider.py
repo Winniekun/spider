@@ -69,6 +69,13 @@ for qq in friends:#遍历qq号列表
 
                 '''将提取的字段值插入mysql数据库，通过用异常处理防止个别的小bug中断爬虫，开始的时候可以先不用异常处理判断是否能正常插入数据库'''
                 try:
+                    # #去重
+                    # same_sql = '''
+                    #     select %s from mood
+                    # '''
+                    # cursor.execute(same_sql,myMood['id'])
+                    # if  cursor.fetchall():
+                    #     print("已经爬过该说说")
                     insert_sql = '''
                                           insert into mood(id,content,time,sitename,pox_x,pox_y,tool,comments_num,date,isTransfered,name)
                                           VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
@@ -77,6 +84,7 @@ for qq in friends:#遍历qq号列表
                     myMood['id'], myMood["Mood_cont"], myMood['time'], myMood['idneme'], myMood['pos_x'],
                     myMood['pos_y'], myMood['tool'], myMood['cmtnum'], myMood['date'], myMood["isTransfered"],
                     myMood['name']))
+
                 except:
                     pass
 

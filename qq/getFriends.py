@@ -27,7 +27,6 @@ def getFriends():
     friend = []
     for row in qq_reader:
         friend.append(row[3])
-    friend.pop(0)
     friends = []
     for f in friend:
         f = f[:-7]
