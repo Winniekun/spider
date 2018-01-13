@@ -1,2 +1,4 @@
 #忽略项
 .idea
+*/__pycache__
+weixin/friend_avatar/
