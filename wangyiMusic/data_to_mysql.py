@@ -37,7 +37,6 @@ class Mysql:
     def insertData(self,table,my_dict):
         try:
             cols = ','.join(my_dict.keys())
-            print(cols)
             values = '","'.join(my_dict.values())
             sql = "insert into %s (%s) values (%s)"%(table,cols,'"'+values+'"')
 
@@ -56,7 +55,7 @@ class Mysql:
                 if "key 'PRIMARY'" in e.args[1]:
                     print('数据已存在')
                 else:
-                    print('数据已存在')
+                    print('数据已存在,未插入数据%s',str(my_dict))
                 return -1
 
         except pymysql.Error as e:
