@@ -4,6 +4,8 @@
 @time: 18-1-20 下午1:33
 @contact: 836242657@qq.com
 '''
+import time
+
 '''
 加密解密
 '''
@@ -39,3 +41,9 @@ def AES_encrypt(text, key, iv):
     #解决can't concat str to bytes
     encrypt_text = str(encrypt_text, encoding="utf-8")
     return encrypt_text
+
+def timeStamp(timeNum):
+    timeStamp = float(timeNum/1000)
+    timeArray = time.localtime(timeStamp)
+    reTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
+    return reTime
