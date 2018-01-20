@@ -10,6 +10,7 @@ import time
 import logger
 
 class Mysql:
+
     host = 'localhost'
     user = 'root'
     pwd = 'Hanhuan.0214'
