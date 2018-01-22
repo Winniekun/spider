@@ -47,17 +47,6 @@ def readCsv(filename):
 def main():
     starbucks = './resources/starbucks.csv'
     reader = readCsv(starbucks)
-    # address = '天安门'
-    # url = pack_url(address)
-    # gecoord = getLngLat(url)
-    # print(gecoord)
-    # pattern = re.compile('"lng":(.*?),"lat":(.*?)}')
-    # lngLat = re.findall(pattern, gecoord)
-    # if lngLat:
-    #     for ll in lngLat:
-    #         print(ll[0])
-    #         print('写入文件%s%s' % ll)
-    #         print(','.join(ll))
     for row in reader:
         address = row[0]
         url=pack_url(address)
