@@ -23,7 +23,7 @@ class App:
     def __init__(self,width = 500,height = 300):
         self.w = width
         self.h = height
-        self.title = "ViP视频破解助手"
+        self.title = "ViP视频破解助手--- By KongWiKi"
         self.root = tk.Tk(className=self.title)
         self.url = tk.StringVar()
         self.v = tk.IntVar()
@@ -62,16 +62,23 @@ class App:
         group = tk.Label(frame_1,text = '请选择一个播放通道',padx = 10,pady = 10)
         tb1 = tk.Radiobutton(frame_1,text = '通道一',variable = self.v, value = 1,width = 10,height = 3)
         tb2 = tk.Radiobutton(frame_1,text = '通道二',variable = self.v, value = 2,width = 10,height = 3)
+        tb3 = tk.Radiobutton(frame_1,text = '通道三',variable = self.v, value = 3,width = 10,height = 3)
         label1 = tk.Label(frame_2,text="请输入视频链接:")
-        entry = tk.Entry(frame_2, textvariable=self.url, highlightcolor='Fuchsia', highlightthickness=1, width=35)
-        label2 = tk.Label(frame_2, text=" ")
+        entry = tk.Entry(frame_2, textvariable=self.url, highlightcolor='Fuchsia', highlightthickness=1, width=30)
+        label2 = tk.Label(frame_2, text="")
         play = tk.Button(frame_2, text="播放", font=('楷体', 12), fg='Purple', width=2, height=1, command=self.video_play)
         label3 = tk.Label(frame_2, text=" ")
         QR_Code = tk.Button(frame_3, text="手机观看", font=('楷体', 12), fg='Purple', width=10, height=2,
                             command=self.QR_Code)
+        download_wmxz = tk.Button(frame_3, text="视频下载", font=('楷体', 12), fg='Purple', width=10, height=2,
+                            command=self.download_wmxz)
         label_explain = tk.Label(frame_3, fg='red', font=('楷体', 12),
-                                 text='\n注意：支持大部分主流视频网站的视频播放！\n此软件仅用于交流学习 请勿用于任何商业用途')
-        label_warning = tk.Label(frame_3, fg='blue', font=('楷体', 12), text='\n建议：将Chrome内核浏览器设置为默认浏览器\n')
+                                 text='\n注意:能否播放 就看个人运气了 \n'
+                                      '毕竟是套的别人的vip在线解析的接口 \n'
+                                      '看不了的话 尝试换个通道！\n'
+                                      '或者自己该源码(在我github上)\n'
+                                      'Ps:此软件仅供看片儿 禁用于其他')
+        label_warning = tk.Label(frame_3, fg='blue', font=('楷体', 12), text='\n建议：将Chrome浏览器设置为默认浏览器效果更佳\n')
 
         #控件布局
         frame_1.pack()
@@ -80,12 +87,14 @@ class App:
         group.grid(row = 0,column = 0)
         tb1.grid(row = 0,column = 1)
         tb2.grid(row = 0,column = 2)
+        tb3.grid(row = 0,column = 3)
         label1.grid(row = 0,column = 0)
-        entry.grid(row = 0,column = 2)
+        entry.grid(row = 0,column = 1)
         label2.grid(row = 0,column = 2)
-        play.grid(row = 0,column = 3,ipadx = 10, ipady = 10)
+        play.grid(row = 0,column = 3,ipadx = 10, ipady = 2)
         label3.grid(row = 0,column = 4)
         QR_Code.grid(row = 0,column = 0)
+        download_wmxz.grid(row = 0,column = 1)
         label_explain.grid(row = 1,column = 1)
         label_warning.grid(row = 2,column = 1)
 
@@ -111,6 +120,9 @@ class App:
         """
         port_1 = 'http://api.baiyug.cn/vip/index.php?url='
         port_2 = 'http://www.wmxz.wang/video.php?url='
+        port_3 = 'http://api.xfsub.com/index.php?url='
+        # if len(self.url.get()) == 0:
+        #     print("逗我呢")
         if re.match('^https?:/{2}\w.+$',self.url.get()):
             if self.v.get() == 1:
                 #视频链接获取
@@ -128,6 +140,16 @@ class App:
                 # 获取time、key、url
                 get_url = 'http://www.vipjiexi.com/x2/tong.php?url=%s' % ip
                 webbrowser.open(get_url)
+            elif self.v.get() == 3:
+                # 链接获取
+                ip = self.url.get()
+                # 链接加密
+                ip = parse.quote_plus(ip)
+                # 浏览器打开
+                webbrowser.open(port_3 + ip)
+
+        elif not self.url.get():
+            msgbox.showerror(title='智商不在线',message='大兄弟 你还没输入链接！')
         else:
             msgbox.showerror(title='错误',message='视频地址无效 请重新输入')
 
@@ -137,37 +159,47 @@ class App:
         :return: 
         """
         if re.match(r'^https?:/{2}\w.+$', self.url.get()):
-            # 视频链接获取
-            ip = self.url.get()
-            # 视频链接加密
-            ip = parse.quote_plus(ip)
-
-            # 获取保存视频的url
-            get_url = 'http://www.sfsft.com/index.php?url=%s' % ip
-            head = {
-                'User-Agent': 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19',
-                'Referer': 'http://www.sfsft.com/index.php?url=%s' % ip
+            # msgbox.showerror(title='错误',message='该功能正在完善')
+            headers = {
+                'Cookie': 'k1=bdd5e5fe936564c762517928789f2be6; k2=1018216933; k3=2581c32a2ef03711d54c094362f09e88; k4=1519741352; k5=783fc0f7376f53802a21cc798e11cd75',
+                'Host': 'vip.baiyug.cn',
+                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36'
             }
-            get_url_req = request.Request(url=get_url, headers=head)
-            get_url_response = request.urlopen(get_url_req)
-            get_url_html = get_url_response.read().decode('utf-8')
-            bf = BeautifulSoup(get_url_html, 'lxml')
-            a = str(bf.find_all('script'))
-            pattern = re.compile("url : '(.+)',", re.IGNORECASE)
-            url = pattern.findall(a)[0]
+            video_url = requests.get(self.url.get(), headers=headers)
 
-            # 获取视频地址
-            get_movie_url = 'http://www.sfsft.com/api.php'
-            get_movie_data = {
-                'up': '0',
-                'url': '%s' % url,
-            }
-            get_movie_req = request.Request(url=get_movie_url, headers=head)
-            get_movie_data = parse.urlencode(get_movie_data).encode('utf-8')
-            get_movie_response = request.urlopen(get_movie_req, get_movie_data)
-            get_movie_html = get_movie_response.read().decode('utf-8')
-            get_movie_data = json.loads(get_movie_html)
-            webbrowser.open(get_movie_data['url'])
+            # # 视频链接获取
+            # ip = self.url.get()
+            # # 视频链接加密
+            # ip = parse.quote_plus(ip)
+            #
+            # # 获取保存视频的url
+            # get_url = 'http://www.sfsft.com/index.php?url=%s' % ip
+            # head = {
+            #     'User-Agent': 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19',
+            #     'Referer': 'http://www.sfsft.com/index.php?url=%s' % ip
+            # }
+            # get_url_req = request.Request(url=get_url, headers=head)
+            # get_url_response = request.urlopen(get_url_req)
+            # get_url_html = get_url_response.read().decode('utf-8')
+            # bf = BeautifulSoup(get_url_html, 'lxml')
+            # a = str(bf.find_all('script'))
+            # pattern = re.compile("url : '(.+)',", re.IGNORECASE)
+            # url = pattern.findall(a)[0]
+            #
+            # # 获取视频地址
+            # get_movie_url = 'http://www.sfsft.com/api.php'
+            # get_movie_data = {
+            #     'up': '0',
+            #     'url': '%s' % url,
+            # }
+            # get_movie_req = request.Request(url=get_movie_url, headers=head)
+            # get_movie_data = parse.urlencode(get_movie_data).encode('utf-8')
+            # get_movie_response = request.urlopen(get_movie_req, get_movie_data)
+            # get_movie_html = get_movie_response.read().decode('utf-8')
+            # get_movie_data = json.loads(get_movie_html)
+            # webbrowser.open(get_movie_data['url'])
+        elif not self.url.get():
+            msgbox.showerror(title='错误',message='该功能正在完善')
         else:
             msgbox.showerror(title='错误', message='视频链接地址无效，请重新输入！')
 
@@ -192,14 +224,15 @@ class App:
             run(words=words, picture=png_path, save_name=qr_name, save_dir=images_pwd)
             top = tk.Toplevel(self.root)
             img = tk.PhotoImage(file=qr_path)
-            text_label = tk.Label(top, fg='red', font=('楷体', 15), text="手机浏览器扫描二维码，在线观看视频！")
+            text_label = tk.Label(top, fg='red', font=('楷体', 15), text="手机浏览器扫描二维码 在线观看视频！")
             img_label = tk.Label(top, image=img)
             text_label.pack()
             img_label.pack()
             top.mainloop()
-
+        elif not self.url.get():
+            msgbox.showerror(title='智商不在线',message='大兄弟 你还没输入链接！')
         else:
-            msgbox.showerror(title='错误', message='视频链接地址无效，请重新输入！')
+            msgbox.showerror(title='错误', message='视频链接地址无效 请重新输入！')
 
     def center(self):
         """
