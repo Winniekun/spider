@@ -15,6 +15,9 @@
 * [x] 爬取京东特定的商品评论---- 2018/1
 * [x] 爬取豆瓣神秘巨星短评---- 2018/2
 * [x] 爬取github--- 2018/2
+* [x] vip视频解析助手--- 2018/2
+![image](https://raw.githubusercontent.com/KongWiKi/spider/master/image/vip-%E7%A0%B4%E8%A7%A3.png)
+
 
 
 
