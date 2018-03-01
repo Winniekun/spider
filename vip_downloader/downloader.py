@@ -119,7 +119,6 @@ class App:
         :return: 
         """
         port_1 = 'http://api.baiyug.cn/vip/index.php?url='
-        port_2 = 'http://www.wmxz.wang/video.php?url='
         port_3 = 'http://api.xfsub.com/index.php?url='
         # if len(self.url.get()) == 0:
         #     print("逗我呢")
