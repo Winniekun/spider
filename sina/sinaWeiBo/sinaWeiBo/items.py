@@ -10,5 +10,5 @@ import scrapy
 
 class SinaweiboItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
+    # name = scrapyLearning.Field()
     pass
