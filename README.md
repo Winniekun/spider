@@ -33,7 +33,10 @@
   ![image](https://raw.githubusercontent.com/KongWiKi/spider/master/image/vip-%E7%A0%B4%E8%A7%A3.png)
 
 
-* [x] 抖音APP视频爬取下载(Fiddler)
+* [x] 抖音APP视频爬取下载(Fiddler)---2018/2
+* [x] scrapy学习(依赖官方文档)
+
+
 
 
 

@@ -71,7 +71,7 @@ class DouYin:
             chunk_size = 1024
             content_size = int(response.headers['content-length'])
             if response.status_code == 200:
-                sys.stdout.write('  [文件大小]:%0.2f MB\n' % (content_size / chunk_size / 1024))
+                sys.stdout.write('  [||%s||文件大小]:%0.2f MB\n' % (video_name,content_size / chunk_size / 1024))
 
                 with open(video_name, "wb") as file:
                     for data in response.iter_content(chunk_size=chunk_size):
@@ -81,7 +81,7 @@ class DouYin:
 
                     sys.stdout.write('    [下载进度]:%.2f%%' % float(size / content_size * 100))
                     sys.stdout.flush()
-        time.sleep(1)
+        time.sleep(2)
 
     def run(self):
         """
@@ -96,7 +96,7 @@ class DouYin:
         video_names, video_urls, nickname = self.get_video_urls(user_id)
         if nickname not in os.listdir():
             os.mkdir(nickname)
-        sys.stdout.write('视频下载中:\n')
+        sys.stdout.write('视频下载中-----------------------:\n')
         for num in range(len(video_urls)):
             print('  %s\n' % video_urls[num])
             video_url = self.get_download_url(video_urls[num])
