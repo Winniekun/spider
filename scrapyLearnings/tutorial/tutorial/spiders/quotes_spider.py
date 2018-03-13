@@ -22,7 +22,6 @@ class QuotesSpider(scrapy.Spider):
            item['author'] = author
            item['tags'] = tags
            yield item
-
        next_page = response.css('.pager .next a::attr(href)').extract_first()
        if next_page is not None:
            next_page = response.urljoin(next_page)#绝对的URL
