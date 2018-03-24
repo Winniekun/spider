@@ -9,7 +9,7 @@ class ZhihuSpider(Spider):
     name = 'zhihu'
     allowed_domains = ['www.zhihu.com']
     start_urls = ['http://www.zhihu.com/']
-    start_user = 'excited-vczh'
+    start_user = 'huainan'
     user_url = 'https://www.zhihu.com/api/v4/members/{user}?include={include}'
     user_query = 'allow_message,is_followed,is_following,is_org,is_blocking,employments,answer_count,follower_count,articles_count,gender,badge[?(type=best_answerer)].topics'
 
@@ -37,10 +37,9 @@ class ZhihuSpider(Spider):
             if field in result.keys():
                 item[field] = result.get(field)
         yield item
-
-        yield Request(self.follows_url.format(user=self.start_user, include=self.follows_query, offset=0, limit=20), callback=self.parse_follows)
-
-        yield Request(self.followers_url.format(user=self.start_user, include=self.followers_query, offset=0, limit=20),callback=self.parse_followers)
+        #对每一个人再实现递归
+        yield Request(self.follows_url.format(user=result.get('url_token'), include=self.follows_query, offset=0, limit=20), callback=self.parse_follows)
+        yield Request(self.followers_url.format(user=result.get('url_token'), include=self.followers_query, offset=0, limit=20),callback=self.parse_followers)
 
     def parse_follows(self, response):
         # print(response.text)
