@@ -70,7 +70,7 @@ def save(txtname,content,tags):
         print('{}保存成功'.format(txtname))
 
 def main():
-    for i in range(1,4):
+    for i in range(7,12):
         page_names = names_crawler(i)
         print("{}共有{}视频还有{}页".format(i,len(page_names),76-i))
         for name in list(page_names):

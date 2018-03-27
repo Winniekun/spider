@@ -7,9 +7,13 @@
 import re
 
 target = {"id":12459,"talk":"rei_my_mama_black_banana","tag":"guitar,live music,music,performance,singer","year":"2017","event":"TEDNYC"}
-print(str(target))
-pattern = re.compile("'id':(\d+)",re.S)
-video_id = re.findall(pattern, str(target))[0]
-video_tags = re.findall("'tag':\s*'(.*?)'", str(target))
-print(video_id)
-print(video_tags)
+# print(str(target))
+# pattern = re.compile("'id':(\d+)",re.S)
+# video_id = re.findall(pattern, str(target))[0]
+# video_tags = re.findall("'tag':\s*'(.*?)'", str(target))
+# print(video_id)
+# print(video_tags)
+for i in range(1,4):
+    print(i)
+for i in range(4,7):
+    print(i)
