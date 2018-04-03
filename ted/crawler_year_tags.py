@@ -70,22 +70,7 @@ def main():
             video_tags, viewed, video_year = video_tags_year(name)
             save('year_tags_views_2',viewed,video_year,video_tags,name)
         time.sleep(random.random()*6)
-    # names = [
-    #     'catherine_mohr_surgery_s_past_present_and_robotic_future',
-    #     'ex_moonie_diane_benscoter_how_cults_think',
-    #     'clay_shirky_how_cellphones_twitter_facebook_can_make_history',
-    #     'jane_poynter_life_in_biosphere_2',
-    #     'richard_st_john_success_is_a_continuous_journey',
-    #     'robert_full_learning_from_the_gecko_s_tail',
-    #     'nancy_etcoff_on_happiness_and_why_we_want_it',
-    #     'john_la_grou_plugs_smart_power_outlets_1',
-    #     'kevin_surace_fixing_drywall_to_heal_the_planet',
-    #     'pete_alcorn_s_vision_of_a_better_world',
-    #     ]
-    # for name in names:
-    #     video_tags, viewed, video_year = video_tags_year(name)
-    #     save('year_tags_views_2',viewed,video_year,video_tags,name)
-    #     time.sleep(random.random()*5)
+
 
 if __name__ == '__main__':
     start = time.time()
