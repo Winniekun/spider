@@ -38,10 +38,12 @@
 * [x] xpath学习  ---2018/3
 * [x] 文件下载(浏览器下载的太慢了,ubuntu上还未发现好的下载软件,就自己简单实现了一个)  ---/2018/3
 * [x] 爬取ted的视频的文本内容，为后续的分析准备
+* [x] WIFI 暴力破解
 
 
+![image](http://p39e7cgx2.bkt.clouddn.com/wifi-crack.png)
 
+![image](http://p39e7cgx2.bkt.clouddn.com/wifi-crack3.png)
 
-
-
+![image](http://p39e7cgx2.bkt.clouddn.com/wifi-crack1.png)
 
