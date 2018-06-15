@@ -249,7 +249,6 @@ def main():
     print("类型为", "-->", docType)
 
     if docType == "ppt":
-
         ppt = BDWKPPT(url)
         print("您将要获取的演示文稿(ppt)名称为:", ppt.title)
         ppt.get_ppt_json_info()
@@ -267,7 +266,6 @@ def main():
         pdf.get_json_content(pure_addr_list)
 
     elif docType == "txt":
-
         txt = BDWKTXT(url)
         print("您将要下载的文本文档(txt)名称为:", txt.title)
         txt.get_txt(url)
