@@ -17,14 +17,14 @@ from multiprocessing.pool import ThreadPool
 import requests
 from requests import Session
 from lxml import etree
+from bs4 import BeautifulSoup
 from requests import RequestException
 
 BASEURl = "https://www.imdb.com/title/tt"
-FILE = 'links.csv'
+FILE = 'test.csv'
 BASEPATH = pathlib.Path(".")
 PROXY_POOL_URL = 'http://localhost:5002/random'
 lock = threading.Lock()
-
 
 
 def get_proxy():
@@ -49,14 +49,13 @@ def get_page(imdb_id, proxy):
 	:return:
 	"""
 	try:
-		session = Session()
 		proxies = {
 			'http': 'http://' + proxy,
 			'https': 'https://' + proxy
 		}
 		target_url = BASEURl + str(imdb_id)
 		print("正在爬取对应的url: " + target_url)
-		response = session.get(url=target_url, proxies=proxies)
+		response = requests.get(url=target_url, proxies=proxies)
 		if response.status_code == 200:
 			return response.text
 		return "被禁"
@@ -73,22 +72,21 @@ def parse_page(content, patterns):
 	"""
 	tree = etree.HTML(content)
 	url = tree.xpath(patterns)
-	# print("图片地址 {}".format(url[0]))
-	return url[0]
+	if url:
+		return url[0]
+	else:
+		return
 
 
 def write2file(filename, contents):
-	with open(filename, 'w') as f:
-		lock.acquire()
-		print("写入内容为: {}".format(contents))
+	with open(filename, 'a') as f:
+		# lock.acquire()
 		f.write(contents + '\n')
-		lock.release()
-	f.close()
+
 
 
 def main(imdb_id, id):
 	print("开始获取电影的封面地址，电影id:{}, {}".format(id, imdb_id))
-	# print(main(imdbId))
 	try:
 		proxy = get_proxy()
 		patterns = '//div[@class="poster"]/a/img/@src'
@@ -113,10 +111,9 @@ def user_thread():
 			imdb_id = row[1]
 			id = row[0]
 			t = Thread(target=main, args=(imdb_id, id))
-			t.setDaemon(True) # 守护线程
+			# t.setDaemon(True)  # 守护线程
 			threads.append(t)
 			t.start()
-
 		for t in threads:
 			t.join()
 	f.close()
