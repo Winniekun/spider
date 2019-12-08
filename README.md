@@ -28,7 +28,7 @@
 
 - [x] vip视频解析助手--- 2018/2     
 
-  ​
+  
 
   ![image](https://raw.githubusercontent.com/KongWiKi/spider/master/image/vip-%E7%A0%B4%E8%A7%A3.png)
 
@@ -49,4 +49,5 @@
 
 * [x] 添加百度文库的爬取（最近在用百度文库，经常提示粘贴超过用量，就弄了该脚本）
 
-  
+* [ ] [并发爬取IMDB的数据](https://github.com/KongWiki/spider/blob/master/concurrentSpider/cur_imdbSpider.py)
+
