@@ -21,7 +21,7 @@ import csv
 
 
 def getFriends():
-    file='./QQmail.csv'
+    file='./qq.csv'
     qq_reader=csv.reader(open(file))
     next(qq_reader)#去头部
     friend = []
