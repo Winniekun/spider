@@ -3,3 +3,5 @@
 */__pycache__/
 weixin/friend_avatar/
 ted/txt/*
+*.csv
+

@@ -49,5 +49,29 @@
 
 * [x] 添加百度文库的爬取（最近在用百度文库，经常提示粘贴超过用量，就弄了该脚本）
 
-* [ ] [并发爬取IMDB的数据](https://github.com/KongWiki/spider/blob/master/concurrentSpider/cur_imdbSpider.py)
+* [x] [并发爬取IMDB的数据](https://github.com/KongWiki/spider/blob/master/concurrentSpider/cur_imdbSpider.py)
+
+## 环境搭建与讲解
+
+### 1. qq空间说说爬取
+
+#### 步骤: 
+
+1. 通过模拟登录获取,因为说说中的请求链接需要的参数是在cookie中获取的,当然也可以通过其他的方式获取对应的cookies. 其中`g_qzonetoken`的获取是在网页的源码中获取的,
+2. 分析说说的链接, 构造参数, 传入即可
+
+### 环境:
+
+1. selenuim
+2. request
+
+### 注意事项
+
+1. 若是使用的是chrome, 注意chromedriver的版本和自己chrome的版本对应
+2. 使用模拟登录, 注意设置合适的睡眠时间, 避免还未执行登录操作, 后续的程序就直接执行了(可添加判断, 未做)
+
+### TODO
+
+* [ ] 并发爬取
+* [ ] 支持断点爬取
 
